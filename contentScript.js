@@ -39,7 +39,22 @@ function showLinksHTML(txt)
     }
     
 
-    var SearchEl=
+    var divId="divzzzz";
+    var styleId="stylezzz";
+    makeElIfNotExist(styleId,"style");
+    makeElIfNotExist(divId,"div");
+
+    var divTxt="";
+    for(var i=0;i<res.length;i++)
+    {
+        divTxt+="<div>";
+        divTxt+="Link: "+res[i].link+"";
+        divTxt+="Text: "+res[i].txt;
+        divTxt+="</div>";
+    }
+    var cssTxt="";
+    document.getElementById(divId).innerHTML=divTxt;
+    document.getElementById(styleId).innerHTML=cssTxt;
 }
 function findLinkInPage(txt)
 {
