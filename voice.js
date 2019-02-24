@@ -29,7 +29,6 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
     if (e.key === "q") {
       if (recognizing) {
         speech.stop();
-        //Fetch search()
         //reset();
       }
     }
