@@ -1,3 +1,15 @@
+function startS()
+{
+  document.body.style.transition="0.2s";
+  document.body.style.filter="invert(100%)";
+}
+
+function endS()
+{
+  document.body.style.filter="invert(0%)";
+}
+
+
 function upgrade() {
   alert('Please upgrade to Google Chrome for best possible experience.');
 }
@@ -20,6 +32,7 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
     if (e.key === "q") {
       if (!recognizing) {
         speech.start();
+        startS();
       }
     }
   };
@@ -29,7 +42,7 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
       if (recognizing) {
         speech.stop();
         //reset();
-        
+        endS();
         setTimeout(function() { 
         showLinksHTML(latest);
         }, 1500);
