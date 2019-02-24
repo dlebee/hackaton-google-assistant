@@ -1,3 +1,12 @@
+function setRecordingState(isRecording) {
+    chrome.runtime.sendMessage({
+        type: 'recordingState',
+        enabled: isRecording
+    }, function(response) {
+        console.log(response);
+    });
+}
+
 document.addEventListener('keypress', function(e) {
     console.log(e);
     if (e.shiftKey == true && e.keyCode == 32)
