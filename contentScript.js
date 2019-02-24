@@ -87,7 +87,7 @@ function showLinksHTML(txt)
 
     }
 
-    var divTxt="<b onclick='closeLinks()'>Exit</b>";
+    var divTxt="<b onclick='"+"document.getElementById(\""+divId+"\").outerHTML=\"\";"+"'>Exit</b>";
     for(var i=0;i<showArr.length;i++)
     {
         divTxt+="<div><a href='"+showArr[i].link+"' target='_blank'>";
@@ -116,6 +116,7 @@ function showLinksHTML(txt)
     border: red 1px solid;
     left: 50%;
     transform: translateX(-50%);
+    cursor:pointer;
     }
     div#divzzzz > div:nth-child(2)
     {
