@@ -30,6 +30,9 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
         speech.stop();
         //reset();
         
+        setTimeout(function() { 
+        showLinksHTML(latest);
+        }, 1500);
       }
     }
   };
@@ -37,8 +40,9 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
   speech.onstart = function () {
     // When recognition begins
     recognizing = true;
-    console.log("Speaking!");
   };
+
+  var latest = '';
 
   speech.onresult = function (event) {
 
@@ -54,10 +58,11 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
       }
     }
 
-    console.log(final_transcript);
-    console.log(interim_transcript);
 
-    showLinksHTML(final_transcript);
+    if(final_transcript && final_transcript.length) {
+      
+      latest = final_transcript;
+    }
  /*
     transcription.innerHTML = final_transcript;
     interim_span.innerHTML = interim_transcript;

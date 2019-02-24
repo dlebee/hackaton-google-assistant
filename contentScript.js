@@ -55,6 +55,8 @@ function closeLinks()
 
 function showLinksHTML(txt)
 {
+    console.log(txt);
+
     var res=findLinkInPage(txt);
     var showArr=[];
     for(var i=0;i<res.length;i++)
@@ -71,14 +73,19 @@ function showLinksHTML(txt)
         document.getElementById(styleId).innerHTML="";
     if(document.getElementById(divId))
         document.getElementById(divId).innerHTML="";
- 
+    
     makeElIfNotExist(styleId,"style");
     makeElIfNotExist(divId,"div");
 
-    var divTxt="";
+    if(document.getElementById(styleId))
+        document.getElementById(styleId).innerHTML="";
+    if(document.getElementById(divId))
+        document.getElementById(divId).innerHTML="";
+
+    var divTxt="<b onclick='closeLinks()'>Exit</b>";
     for(var i=0;i<showArr.length;i++)
     {
-        divTxt+="<b onclick='closeLinks()'>Exit</b><div><a href='"+showArr[i].link+"' target='_blank'>";
+        divTxt+="<div><a href='"+showArr[i].link+"' target='_blank'>";
         divTxt+="Link: "+showArr[i].link+"<br/><br/>";
         divTxt+="Text: "+showArr[i].txt;
         divTxt+="</a></div>";
