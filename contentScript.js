@@ -78,7 +78,7 @@ function showLinksHTML(txt)
     var divTxt="";
     for(var i=0;i<showArr.length;i++)
     {
-        divTxt+="<b onclick='closeLinks()'>Exit</b><div onclick='"+window.open(showArr[i].link, '_blank')+"'><a href='"+showArr[i].link+"' target='_blank'>";
+        divTxt+="<b onclick='closeLinks()'>Exit</b><div><a href='"+showArr[i].link+"' target='_blank'>";
         divTxt+="Link: "+showArr[i].link+"<br/><br/>";
         divTxt+="Text: "+showArr[i].txt;
         divTxt+="</a></div>";

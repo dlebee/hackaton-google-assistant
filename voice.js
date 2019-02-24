@@ -16,7 +16,6 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
   function reset() {
     recognizing = false;
   }
-
   document.onkeydown = function (e) {
     if (e.key === "q") {
       if (!recognizing) {
@@ -30,6 +29,7 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
       if (recognizing) {
         speech.stop();
         //reset();
+        
       }
     }
   };
@@ -56,6 +56,8 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
 
     console.log(final_transcript);
     console.log(interim_transcript);
+
+    showLinksHTML(final_transcript);
  /*
     transcription.innerHTML = final_transcript;
     interim_span.innerHTML = interim_transcript;
@@ -86,3 +88,4 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
   };
 
 }
+///////////////////////////
