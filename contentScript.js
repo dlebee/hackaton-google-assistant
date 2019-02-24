@@ -81,17 +81,23 @@ function showLinksHTML(txt)
         document.getElementById(styleId).innerHTML="";
     if(document.getElementById(divId))
         document.getElementById(divId).innerHTML="";
+        
+    if(showArr.length)
+    {
+
+    }
 
     var divTxt="<b onclick='closeLinks()'>Exit</b>";
     for(var i=0;i<showArr.length;i++)
     {
         divTxt+="<div><a href='"+showArr[i].link+"' target='_blank'>";
-        divTxt+="Link: "+showArr[i].link+"<br/><br/>";
-        divTxt+="Text: "+showArr[i].txt;
+        divTxt+="<span>Text: "+showArr[i].txt+"</span><br/><br/>";
+        divTxt+="<span id='link'>Link: "+showArr[i].link+"</span>";
+        
         divTxt+="</a></div>";
     }
     var cssTxt=`
-    #divzzzz {  box-shadow: rgba(0,0,0,0.7) 0px 0px 100px 1000px;overflow-y:auto;position: fixed; left: 10%; top: 10%; width: 80%; height: 80%; background-color: white; z-index: 9999999;}
+    #divzzzz {      filter: invert(100%);box-shadow: rgba(0,0,0,0.7) 0px 0px 100px 1000px;overflow-y:auto;position: fixed; left: 10%; top: 10%; width: 80%; height: 80%; background-color: white; z-index: 9999999;}
     div#divzzzz > div {
         border: black solid;
         margin: 20px;
@@ -114,6 +120,11 @@ function showLinksHTML(txt)
     div#divzzzz > div:nth-child(2)
     {
         margin-top:200px;
+    }
+
+    div#divzzzz a
+    {
+        color: darkblue !important;
     }
     `;
     document.getElementById(divId).innerHTML=divTxt;
