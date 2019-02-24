@@ -8,7 +8,6 @@ function setRecordingState(isRecording) {
 }
 
 document.addEventListener('keypress', function(e) {
-    console.log(e);
     if (e.shiftKey == true && e.keyCode == 32)
         {
             alert(2);
@@ -18,6 +17,19 @@ document.addEventListener('keypress', function(e) {
             alert(res[0].getAttribute("href"));
         }
 });
+
+function getAbsPath(path)
+{
+    try
+    {
+        new URL(path);
+        return path;
+    }
+    catch(e)
+    {
+        return new URL(window.location.href+"/"+path).href;
+    }
+}
 
 function makeElIfNotExist(id,tagname)
 {
@@ -33,6 +45,14 @@ function makeElIfNotExist(id,tagname)
     }
 }
 
+var divId="divzzzz";
+var styleId="stylezzz";
+
+function closeLinks()
+{
+    document.getElementById(divId).outerHTML="";
+}
+
 function showLinksHTML(txt)
 {
     var res=findLinkInPage(txt);
@@ -42,29 +62,57 @@ function showLinksHTML(txt)
         var el=res[i];
 
         showArr.push({
-            link:el.getAttribute("href"),
+            link:getAbsPath(el.getAttribute("href")),
             txt:el.innerText
         })
     }
     
-
-    var divId="divzzzz";
-    var styleId="stylezzz";
+    if(document.getElementById(styleId))
+        document.getElementById(styleId).innerHTML="";
+    if(document.getElementById(divId))
+        document.getElementById(divId).innerHTML="";
+ 
     makeElIfNotExist(styleId,"style");
     makeElIfNotExist(divId,"div");
 
     var divTxt="";
-    for(var i=0;i<res.length;i++)
+    for(var i=0;i<showArr.length;i++)
     {
-        divTxt+="<div>";
-        divTxt+="Link: "+res[i].link+"";
-        divTxt+="Text: "+res[i].txt;
-        divTxt+="</div>";
+        divTxt+="<b onclick='closeLinks()'>Exit</b><div onclick='"+window.open(showArr[i].link, '_blank')+"'><a href='"+showArr[i].link+"' target='_blank'>";
+        divTxt+="Link: "+showArr[i].link+"<br/><br/>";
+        divTxt+="Text: "+showArr[i].txt;
+        divTxt+="</a></div>";
     }
-    var cssTxt="divzzzz {position:fixed;left:0px;top:0px;}";
+    var cssTxt=`
+    #divzzzz {  box-shadow: rgba(0,0,0,0.7) 0px 0px 100px 1000px;overflow-y:auto;position: fixed; left: 10%; top: 10%; width: 80%; height: 80%; background-color: white; z-index: 9999999;}
+    div#divzzzz > div {
+        border: black solid;
+        margin: 20px;
+        font-size: 50px;
+        cursor:pointer;
+    }
+    div#divzzzz > b
+    {
+        text-align: center;
+    float: left;
+    left: 0;
+    width: auto;
+    height: auto;
+    position: relative;
+    font-size: 5rem;
+    border: red 1px solid;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+    div#divzzzz > div:nth-child(2)
+    {
+        margin-top:200px;
+    }
+    `;
     document.getElementById(divId).innerHTML=divTxt;
     document.getElementById(styleId).innerHTML=cssTxt;
 }
+
 function findLinkInPage(txt)
 {
     function isIncludedInText(element)
