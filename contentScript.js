@@ -55,9 +55,24 @@ function closeLinks()
 
 function showLinksHTML(txt)
 {
+    
+
     console.log(txt);
 
     var res=findLinkInPage(txt);
+
+    var synth = window.speechSynthesis;
+    var message = '';
+    if (res.length == 0)
+        message = 'We found nothing, try again..';
+    else
+        message = 'We found ' + res.length + ' results for ' + txt;
+
+    var utterThis = new SpeechSynthesisUtterance(message);
+    var voices = synth.getVoices();
+    utterThis.voice = voices[0];
+    synth.speak(utterThis);
+
     var showArr=[];
     for(var i=0;i<res.length;i++)
     {
