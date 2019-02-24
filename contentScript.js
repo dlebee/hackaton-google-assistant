@@ -7,53 +7,6 @@ function setRecordingState(isRecording) {
     });
 }
 
-function makeElIfNotExist(id,tagname)
-{
-    if(!document.getElementById(String(id)))
-    {
-        var newel=document.createElement(tagname);
-        newel.setAttribute("id",id);
-        document.body.appendChild(newel);
-    }
-    else
-    {
-        document.getElementById(String(id)).innerHTML="";
-    }
-}
-
-function showLinksHTML(txt)
-{
-    var res=findLinkInPage(txt);
-    var showArr=[];
-    for(var i=0;i<res.length;i++)
-    {
-        var el=res[i];
-
-        showArr.push({
-            link:el.getAttribute("href"),
-            txt:el.innerText
-        })
-    }
-    
-
-    var divId="divzzzz";
-    var styleId="stylezzz";
-    makeElIfNotExist(styleId,"style");
-    makeElIfNotExist(divId,"div");
-
-    var divTxt="";
-    for(var i=0;i<res.length;i++)
-    {
-        divTxt+="<div>";
-        divTxt+="Link: "+res[i].link+"";
-        divTxt+="Text: "+res[i].txt;
-        divTxt+="</div>";
-    }
-    var cssTxt="divzzzz {position:fixed}";
-    document.getElementById(divId).innerHTML=divTxt;
-    document.getElementById(styleId).innerHTML=cssTxt;
-}
-
 document.addEventListener('keypress', function(e) {
     console.log(e);
     if (e.shiftKey == true && e.keyCode == 32)
@@ -108,7 +61,7 @@ function showLinksHTML(txt)
         divTxt+="Text: "+res[i].txt;
         divTxt+="</div>";
     }
-    var cssTxt="";
+    var cssTxt="divzzzz {position:fixed;left:0px;top:0px;}";
     document.getElementById(divId).innerHTML=divTxt;
     document.getElementById(styleId).innerHTML=cssTxt;
 }
