@@ -28,7 +28,8 @@ if (!(window.webkitSpeechRecognition) && !(window.speechRecognition)) {
   document.onkeyup = function (e) {
     if (e.key === "q") {
       if (recognizing) {
-        //speech.stop();
+        speech.stop();
+        //Fetch search()
         //reset();
       }
     }
