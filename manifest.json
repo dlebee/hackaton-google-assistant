@@ -3,13 +3,13 @@
     "version": "1.0",
     "description": "Google assistant for chrome",
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["background.js", "auto-trigger.js"],
         "persistent" : false
     },
     "browser_action": {
         
     },
-    "permissions": ["activeTab"],
+    "permissions": ["activeTab","contentSettings"],
     "manifest_version": 2,
     "content_scripts": [
         {

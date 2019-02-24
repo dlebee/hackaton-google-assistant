@@ -8,7 +8,7 @@ function setRecordingState(isRecording) {
 }
 
 document.addEventListener('keypress', function(e) {
-    console.log(e);
+    //console.log(e);
     if (e.shiftKey == true && e.keyCode == 32)
         {
             alert(2);

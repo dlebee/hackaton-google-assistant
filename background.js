@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(function() {
-    
+
 });
 
 chrome.runtime.onMessage.addListener(
