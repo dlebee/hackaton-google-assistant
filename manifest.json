@@ -3,18 +3,18 @@
     "version": "1.0",
     "description": "Google assistant for chrome",
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["background.js", "popup.js"],
         "persistent" : false
     },
     "browser_action": {
-        
+        "default_popup": "popup.html"
     },
-    "permissions": ["activeTab"],
+    "permissions": ["activeTab","contentSettings", "tabs"],
     "manifest_version": 2,
     "content_scripts": [
         {
-            "matches": ["http://*/*"],
-            "js": ["contentScript.js"]
+            "matches": ["https://*/*"],
+            "js": ["contentScript.js","voice.js"]
         }
     ]
 }
