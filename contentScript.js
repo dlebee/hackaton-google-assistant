@@ -7,17 +7,6 @@ function setRecordingState(isRecording) {
     });
 }
 
-document.addEventListener('keypress', function(e) {
-    if (e.shiftKey == true && e.keyCode == 32)
-        {
-            alert(2);
-            var txt = "research";
-            var res = findLinkInPage(txt);
-            if(res.length)
-            alert(res[0].getAttribute("href"));
-        }
-});
-
 function getAbsPath(path)
 {
     try
