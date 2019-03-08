@@ -11,13 +11,13 @@ In your Chrome browser:
  - Load the unpacked folder
  - Allow the microphone perrmions: 
 
-![demo of this](/allow_permission.jpg)
+![demo of this](/img/allow_permission.jpg)
 
  - Hit keyboard `Q` and say something you want to navigate , for example, "Contact Page" or "Menu" etc.
 
  - It will search the web page you on to match your voice search, if anything found or not found, the page will pop-out results / not found reminder to you:
 
-![demo of this](/Screenshot.jpg)
+![demo of this](/img/Screenshot.jpg)
 
 > Due to it was designed and implemented in a one-day hackathon, this is more like a demo version. More features might be added shortly.
 
